@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Expense Tracker</title>
+    <link rel="stylesheet" href="PET.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="splash-content">
+            <h1>Welcome to Your Personal Expense Tracker</h1>
+            <div class="loading-bar"></div>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="app-container" class="hidden">
+        <!-- Interface 1: Theme Selection -->
+        <div id="theme-selection" class="interface">
+            <h1>Select Your Theme</h1>
+            <div class="theme-options">
+                <button id="light-theme" class="theme-btn light-btn">
+                    <span>🌞</span> Light Theme
+                </button>
+                <button id="dark-theme" class="theme-btn dark-btn">
+                    <span>🌚</span> Dark Theme
+                </button>
+            </div>
+        </div>
+
+        <!-- Interface 2: User Type Selection -->
+        <div id="user-type-selection" class="interface hidden">
+            <h1>Who Are You?</h1>
+            <div class="user-options">
+                <button id="student-btn" class="user-btn">
+                    <span>👦</span> I'm a Student
+                </button>
+                <button id="earner-btn" class="user-btn">
+                    <span>👨‍💼</span> I'm an Earning Individual
+                </button>
+            </div>
+        </div>
+
+        <!-- Interface 3: Action Selection -->
+        <div id="action-selection" class="interface hidden">
+            <h1>What Would You Like To Do?</h1>
+            <div class="form-container">
+                <div class="input-group">
+                    <label for="user-name">Your Name:</label>
+                    <input type="text" id="user-name" placeholder="Enter your name">
+                </div>
+                <div class="input-group">
+                    <label for="year">Year:</label>
+                    <input type="number" id="year" placeholder="Enter year (e.g., 2023)" min="2000" max="2100">
+                </div>
+                <div class="input-group">
+                    <label for="month">Month:</label>
+                    <select id="month">
+                        <option value="">Select Month</option>
+                        <option value="January">January</option>
+                        <option value="February">February</option>
+                        <option value="March">March</option>
+                        <option value="April">April</option>
+                        <option value="May">May</option>
+                        <option value="June">June</option>
+                        <option value="July">July</option>
+                        <option value="August">August</option>
+                        <option value="September">September</option>
+                        <option value="October">October</option>
+                        <option value="November">November</option>
+                        <option value="December">December</option>
+                    </select>
+                </div>
+            </div>
+            <div class="action-options">
+                <button id="enter-data-btn" class="action-btn">Enter New Data</button>
+                <button id="view-data-btn" class="action-btn">View Previous Data</button>
+                <button id="edit-data-btn" class="action-btn">Edit Previous Data</button>
+            </div>
+        </div>
+
+        <!-- Interface 4: Data Entry Form -->
+        <div id="data-entry" class="interface hidden">
+            <h1>Enter Your Expense Details</h1>
+            <div class="form-container">
+                <div class="input-group">
+                    <label id="income-label">Pocket Money:</label>
+                    <input type="number" id="income" placeholder="Enter amount">
+                </div>
+                <div class="input-group">
+                    <label for="savings-goal">Savings Goal:</label>
+                    <input type="number" id="savings-goal" placeholder="Enter savings goal">
+                </div>
+                
+                <div id="expense-categories" class="expense-categories">
+                    <!-- Dynamic categories will be inserted here -->
+                </div>
+                
+                <div class="input-group">
+                    <label for="other-expense">Other Expenses:</label>
+                    <input type="number" id="other-expense" placeholder="Enter other expenses">
+                </div>
+            </div>
+            <button id="next-to-analysis" class="next-btn">Next →</button>
+        </div>
+
+        <!-- Interface 5: Analysis Page -->
+        <div id="analysis-page" class="interface hidden">
+            <h1>Your Financial Analysis</h1>
+            <div class="analysis-container">
+                <div class="summary-box">
+                    <h2>Summary</h2>
+                    <div class="summary-item">
+                        <span>Total Income/Pocket Money:</span>
+                        <span id="total-income">₹0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Total Expenses:</span>
+                        <span id="total-expenses">₹0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Money Left After Expenses:</span>
+                        <span id="money-left">₹0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Your Savings Goal:</span>
+                        <span id="display-savings-goal">₹0</span>
+                    </div>
+                    <div class="summary-item highlight">
+                        <span>Money Left After Savings:</span>
+                        <span id="final-amount">₹0</span>
+                    </div>
+                    <div id="savings-message" class="savings-message"></div>
+                </div>
+                
+                <div class="expense-breakdown">
+                    <h2>Expense Breakdown</h2>
+                    <div id="expense-chart" class="expense-chart">
+                        <!-- Chart will be inserted here -->
+                    </div>
+                </div>
+                
+                <div class="suggestions-box">
+                    <h2>Suggestions</h2>
+                    <div id="suggestions-content"></div>
+                </div>
+                
+                <div class="chatbot-container">
+                    <h2>Need Help?</h2>
+                    <div class="chatbot">
+                        <select id="chatbot-questions">
+                            <option value="">Select a question...</option>
+                            <!-- Questions will be inserted here -->
+                        </select>
+                        <div id="chatbot-response" class="chatbot-response"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button id="compare-btn" class="action-btn">Compare with Last Month</button>
+                <button id="go-home-from-analysis" class="action-btn">Go Home</button>
+            </div>
+        </div>
+
+        <!-- Interface 6: View/Edit Data -->
+        <div id="view-data" class="interface hidden">
+            <h1>Your Previous Records</h1>
+            <div class="records-container">
+                <div id="records-list" class="records-list">
+                    <!-- Records will be inserted here -->
+                </div>
+            </div>
+            <button id="go-home-from-view" class="action-btn">Go Home</button>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="click-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3"></audio>
+    <audio id="success-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3"></audio>
+
+    <script src="PET.js"></script>
+</body>
+</html>
