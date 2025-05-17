@@ -55,16 +55,7 @@ A **web-based financial management tool** designed for students and young profes
 - PDF report exports  
 - Advanced analytics and trends  
 
----
 
-## Team
-
-- **Hifza Amir** (CS-2341378)  
-- **Aaliya Aiyaz** (CS-23411272)  
-
-**Guided by**: Mr. Shantanu Bhindewari  
-**Institution**: Department of Computer Science, IILM University, Greater Noida  
-**Submission Date**: 29 April 2025
 
 ---
 
